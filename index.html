@@ -169,13 +169,13 @@ button, input, select { font: inherit; color: inherit; }
 .name-input-lg { flex: 1 1 0; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); font-size: 17px; font-weight: 700; letter-spacing: -0.015em; }
 
 .people { list-style: none; margin: 0; padding: 0; }
-.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 7px 16px; border-bottom: 1px solid var(--hairline); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--hairline); }
 .who2 { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.pos { font-size: 11.5px; line-height: 1.2; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.l2 { display: grid; grid-template-columns: minmax(70px, 1.1fr) 140px 112px minmax(118px, 1fr); column-gap: 10px; align-items: baseline; min-width: 0; }
-.l2 .nm { font-size: 16px; line-height: 1.25; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pos { font-size: 12.5px; line-height: 1.2; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.l2 { display: grid; grid-template-columns: minmax(0, 1.2fr) 150px 144px minmax(124px, 1fr); column-gap: 10px; align-items: baseline; min-width: 0; }
+.l2 .nm { font-size: 20px; line-height: 1.25; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .nm.muted { color: var(--muted); font-weight: 500; }
-.row.relief { grid-template-columns: minmax(0, 1fr) 212px; padding-top: 1px; padding-bottom: 8px; }
+.row.relief { grid-template-columns: minmax(0, 1fr) 264px; padding-top: 1px; padding-bottom: 8px; }
 .row.relief .l2 .nm { font-size: 14px; color: var(--muted); }
 .row.relief .st, .row.relief .so { color: var(--muted); font-weight: 500; }
 .arrow { color: var(--in-ink); font-weight: 800; margin-right: 3px; }
@@ -184,7 +184,7 @@ button, input, select { font: inherit; color: inherit; }
 .row.edit .ph-input { flex: 1 1 150px; }
 .row.slot-head { padding-bottom: 0; border-bottom: 0; }
 .row.slot-add { border-bottom: 1px solid var(--hairline); }
-.row .pos-input { flex: 1 1 100%; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); font-size: 16px; font-weight: 700; }
+.row .pos-input { flex: 1 1 200px; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); font-size: 16px; font-weight: 700; }
 .row:last-child { border-bottom: 0; }
 .row.edit { display: flex; flex-wrap: wrap; gap: 6px 8px; }
 .row .name-input { flex: 1 1 100%; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); font-size: 16px; font-weight: 500; }
@@ -200,6 +200,9 @@ button, input, select { font: inherit; color: inherit; }
 .row.is-in .st { color: var(--in-ink); }
 .row.is-duty .st { color: var(--duty-ink); }
 .ph, .st, .so { overflow: hidden; text-overflow: ellipsis; }
+.l2 .ph, .l2 .st, .l2 .so { font-size: 14px; }
+.discrete .l2 { grid-template-columns: minmax(0, 1.3fr) 160px minmax(130px, 1fr); }
+.discrete .l2 .st { display: none; }
 .so { font-size: 12.5px; line-height: 1.25; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 0; }
 .so.soon { color: var(--in-ink); font-weight: 700; }
 .so.late { color: var(--warn); font-weight: 700; }
@@ -221,9 +224,9 @@ button, input, select { font: inherit; color: inherit; }
 .log-win td { height: 38px; padding-top: 0; padding-bottom: 0; white-space: nowrap; }
 
 /* Liquid-glass slider IN | OUT and DUTY bubble */
-.ctl { display: grid; grid-template-columns: 132px 72px; align-items: center; column-gap: 8px; justify-self: end; }
+.ctl { display: grid; grid-template-columns: 168px 88px; align-items: center; column-gap: 8px; justify-self: end; }
 .seg {
-  position: relative; display: block; width: 132px; height: 38px; padding: 0; border-radius: 999px; cursor: pointer;
+  position: relative; display: block; width: 168px; height: 48px; padding: 0; border-radius: 999px; cursor: pointer;
   -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
   background: var(--track); border: 1px solid var(--track-line);
   box-shadow: inset 0 1px 3px var(--track-shadow), inset 0 -1px 0 var(--hi);
@@ -238,7 +241,7 @@ button, input, select { font: inherit; color: inherit; }
 .seg[data-state="out"] .pill-bg { transform: translateX(100%); background-color: var(--out); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 -2px 3px rgba(0, 0, 0, 0.14), 0 0 0 0.5px rgba(255, 255, 255, 0.5), 0 3px 8px rgba(120, 20, 18, 0.32); }
 .seg-b {
   position: absolute; top: 0; bottom: 0; width: calc((100% - 6px) / 2); display: flex; align-items: center; justify-content: center;
-  font-size: 12px; line-height: 1; font-weight: 700; letter-spacing: 0.03em; color: var(--muted); transition: color 0.25s ease; pointer-events: none;
+  font-size: 15px; line-height: 1; font-weight: 700; letter-spacing: 0.03em; color: var(--muted); transition: color 0.25s ease; pointer-events: none;
 }
 .seg-b[data-s="in"] { left: 3px; }
 .seg-b[data-s="out"] { right: 3px; }
@@ -246,10 +249,10 @@ button, input, select { font: inherit; color: inherit; }
 .seg[data-state="out"] .seg-b[data-s="out"] { color: var(--on-out); text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25); }
 .seg:disabled, .tag:disabled { cursor: default; }
 .tag {
-  width: 72px; height: 38px; display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 999px;
+  width: 88px; height: 48px; display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 999px;
   border: 1px solid var(--track-line); background-color: var(--track);
   box-shadow: inset 0 1px 3px var(--track-shadow), inset 0 -1px 0 var(--hi);
-  font-size: 12px; line-height: 1; font-weight: 700; letter-spacing: 0.02em; color: var(--muted); cursor: pointer;
+  font-size: 14px; line-height: 1; font-weight: 700; letter-spacing: 0.02em; color: var(--muted); cursor: pointer;
   -webkit-tap-highlight-color: transparent; touch-action: manipulation;
   transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -319,9 +322,14 @@ td.who-c { font-weight: 600; }
 }
 #toast button { border: 0; background: transparent; color: inherit; font-weight: 700; text-decoration: underline; cursor: pointer; min-height: 36px; padding: 0 6px; }
 
-@media (max-width: 700px) {
-  .l2 { display: flex; flex-wrap: wrap; column-gap: 10px; row-gap: 0; }
-  .l2 .nm { flex: 1 1 100%; }
+@media (max-width: 960px) {
+  body:not(.discrete) .l2 { display: flex; flex-wrap: wrap; column-gap: 12px; row-gap: 0; }
+  body:not(.discrete) .l2 .nm { flex: 0 1 auto; max-width: 100%; }
+  body:not(.discrete) .l2 .ph, body:not(.discrete) .l2 .st, body:not(.discrete) .l2 .so { overflow: visible; white-space: normal; }
+}
+@media (max-width: 860px) {
+  .l2 { display: flex; flex-wrap: wrap; column-gap: 12px; row-gap: 0; }
+  .l2 .nm { flex: 0 1 auto; max-width: 100%; }
   .l2 .ph, .l2 .st, .l2 .so { overflow: visible; white-space: normal; }
 }
 @media (max-width: 520px) { .logo { height: 32px; } }
@@ -337,7 +345,7 @@ td.who-c { font-weight: 600; }
 .dlg-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .dlg-actions .btn { flex: 1 1 140px; min-height: 46px; }
 .dlg-actions .go { background: var(--out); color: var(--on-out); border-color: transparent; }
-.ro-b { display: flex; align-items: center; justify-content: center; height: 36px; border-radius: 999px; font-size: 14px; font-weight: 800; letter-spacing: 0.05em; }
+.ro-b { display: flex; align-items: center; justify-content: center; height: 46px; border-radius: 999px; font-size: 16px; font-weight: 800; letter-spacing: 0.05em; }
 .ro-b.in { background: var(--in); color: var(--on-in); }
 .ro-b.out { background: var(--out); color: var(--on-out); }
 .ro-b.duty { background: var(--duty); color: var(--on-duty); }
@@ -345,12 +353,25 @@ td.who-c { font-weight: 600; }
 .tv-exit[hidden] { display: none; }
 .tv .tabs, .tv .tools, .tv .log { display: none; }
 .tv .l2 { grid-template-columns: minmax(120px, 1.1fr) 170px 150px minmax(150px, 1fr); }
-.tv .l2 .nm { font-size: 20px; }
+.tv .l2 .nm { font-size: 24px; }
 .tv .pos { font-size: 13px; }
 .tv .ph, .tv .st, .tv .so { font-size: 15px; }
 .tv .row { padding-top: 9px; padding-bottom: 9px; }
 .swap { appearance: none; -webkit-appearance: none; max-width: 100%; margin: 0; padding: 0 20px 0 0; border: 0; border-radius: 0; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5l4.5 4.5 4.5-4.5' fill='none' stroke='%238a94a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right center; color: inherit; font: inherit; font-weight: 600; line-height: 1.25; text-overflow: ellipsis; cursor: pointer; }
 .swap:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.mv { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+.btn.ic { min-width: 42px; min-height: 40px; padding: 0 10px; font-size: 18px; line-height: 1; }
+.btn.ic:disabled { opacity: 0.35; }
+.mv select { min-height: 40px; max-width: 150px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); color: var(--ink); font: 600 14px var(--font); }
+.dgroup-head .mv { margin-left: auto; }
+.foot { display: flex; align-items: center; gap: 12px; margin: 18px 4px 0; }
+.disc { appearance: none; -webkit-appearance: none; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 8px 0 16px; border-radius: 999px; border: 1px solid var(--hairline); background: var(--glass); color: var(--ink); font: 700 15px var(--font); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.disc-s { position: relative; width: 50px; height: 30px; border-radius: 999px; background: var(--track); border: 1px solid var(--track-line); transition: background-color 0.25s ease; }
+.disc-s::after { content: ""; position: absolute; top: 2px; left: 2px; width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); transition: transform 0.3s cubic-bezier(0.34, 1.5, 0.5, 1); }
+.disc[aria-checked="true"] .disc-s { background: var(--in); }
+.disc[aria-checked="true"] .disc-s::after { transform: translateX(20px); }
+.disc-h { font-size: 13px; color: var(--muted); }
+.tv .foot { display: none; }
 </style>
 
 <style>
@@ -396,6 +417,7 @@ td.who-c { font-weight: 600; }
 
   <section id="panelRoster" role="tabpanel" aria-labelledby="tabRoster">
     <div id="main"><p class="note">Loading…</p></div>
+    <div class="foot"><button type="button" class="disc" id="btnDisc" role="switch" aria-checked="true" data-act="discrete"><span>Discrete</span><span class="disc-s"></span></button><span class="disc-h" id="discHint"></span></div>
   </section>
 
   <section id="panelVisitors" role="tabpanel" aria-labelledby="tabVis" hidden>
@@ -437,7 +459,7 @@ td.who-c { font-weight: 600; }
 <script>
 (function () {
   var LS_R = "dutysignin.roster", LS_L = "dutysignin.log", LS_V = "dutysignin.visitors";
-  var state = { roster: null, log: [], visitors: [], ready: false, editing: false, writable: true, online: false, error: "", tab: "roster", tv: /tv/i.test(location.hash) };
+  var state = { roster: null, log: [], visitors: [], ready: false, editing: false, writable: true, online: false, error: "", tab: "roster", tv: /tv/i.test(location.hash), discrete: true };
   var db = null, downloads = null;
   var main = document.getElementById("main");
   var toastEl = document.getElementById("toast");
@@ -464,6 +486,7 @@ td.who-c { font-weight: 600; }
     });
     return slots;
   }
+  function normalize(d) { d.people = [].concat.apply([], slotsOf(d).map(function (sl) { return sl.members; })); }
   function activeOf(d, sl) {
     var id = d.active && d.active[sl.key], m = id && sl.members.find(function (x) { return x.id === id; });
     if (m) return m;
@@ -484,6 +507,7 @@ td.who-c { font-weight: 600; }
   }
   function lsGet(k, def) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch (e) { return def; } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  state.discrete = lsGet("dutysignin.discrete", true) !== false;
 
   function defaultRoster() {
     var counts = [10, 5, 4];
@@ -616,7 +640,7 @@ td.who-c { font-weight: 600; }
     var duty = inDept.find(function (e) { return e.duty; });
     var head;
     if (state.editing) {
-      head = '<header class="dgroup-head"><input class="name-input-lg" id="dn-' + esc(d.id) + '" data-edit="dname" data-d="' + esc(d.id) + '" value="' + esc(d.name) + '" aria-label="Department name"><button class="btn quiet danger" data-act="remove-dept" data-d="' + esc(d.id) + '">Remove dept</button></header>';
+      head = '<header class="dgroup-head"><input class="name-input-lg" id="dn-' + esc(d.id) + '" data-edit="dname" data-d="' + esc(d.id) + '" value="' + esc(d.name) + '" aria-label="Department name"><span class="mv"><button class="btn quiet ic" data-act="dept-up" data-d="' + esc(d.id) + '" aria-label="Move department up"' + (i === 0 ? " disabled" : "") + '>&uarr;</button><button class="btn quiet ic" data-act="dept-down" data-d="' + esc(d.id) + '" aria-label="Move department down"' + (i >= deptList().length - 1 ? " disabled" : "") + '>&darr;</button></span><button class="btn quiet danger" data-act="remove-dept" data-d="' + esc(d.id) + '">Remove dept</button></header>';
     } else {
       head = '<header class="dgroup-head"><div class="dtitle"><h2>' + esc(d.name) + '</h2><span class="count">' + inDept.length + " / " + d.people.filter(function (m) { var as = activeSet(d); return as[m.id] || inDept.some(function (e) { return e.pid === m.id; }); }).length + ' in</span></div>' +
         (duty ? '<div class="dutybar"><span class="dot"></span><span class="t">On duty: ' + esc(duty.name) + '</span></div>' : "") + '</header>';
@@ -649,11 +673,12 @@ td.who-c { font-weight: 600; }
       return '<li class="row' + (s !== "out" ? " is-" + s : "") + '"><div class="who2">' + (pos ? '<span class="pos">' + esc(pos) + "</span>" : "") +
         '<div class="l2"><span class="nm">' + nameHTML(p, sl) + "</span>" + phoneHTML(p) + '<span class="st">' + esc(st) + '</span><span class="so' + so.cls + '"' + (so.tip ? ' title="' + esc(so.tip) + '"' : "") + ">" + esc(so.txt) + "</span></div></div>" + ctlHTML(d, p, s) + "</li>";
     }
-    var rows = slots.map(function (sl) {
+    var rows = slots.map(function (sl, si) {
       if (state.editing) {
-        return '<li class="row edit slot-head"><input class="pos-input" data-edit="spos" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" value="' + esc(sl.pos) + '" placeholder="Position, e.g. Captain" aria-label="Position"></li>' +
+        return '<li class="row edit slot-head"><input class="pos-input" data-edit="spos" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" value="' + esc(sl.pos) + '" placeholder="Position, e.g. Captain" aria-label="Position"><span class="mv"><button class="btn quiet ic" data-act="slot-up" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" aria-label="Move position up"' + (si === 0 ? " disabled" : "") + '>&uarr;</button><button class="btn quiet ic" data-act="slot-down" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" aria-label="Move position down"' + (si >= slots.length - 1 ? " disabled" : "") + '>&darr;</button>' +
+          (deptList().length > 1 ? '<select data-moveslot="1" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" aria-label="Move to department"><option value="">Move to…</option>' + deptList().filter(function (x) { return x.id !== d.id; }).map(function (x) { return '<option value="' + esc(x.id) + '">' + esc(x.name) + "</option>"; }).join("") + "</select>" : "") + '</span></li>' +
           sl.members.map(editRow).join("") +
-          '<li class="row edit slot-add"><button class="btn quiet" data-act="add-relief" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '">+ Add relief person (rotation)</button></li>';
+          '<li class="row edit slot-add"><button class="btn quiet" data-act="add-relief" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '">+ Add relief person (rotation)</button> <button class="btn quiet" data-act="add-below" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '">+ Position below</button></li>';
       }
       var act = activeOf(d, sl);
       var vis = [act].concat(sl.members.filter(function (m) { return m !== act && openPids[m.id]; }));
@@ -756,7 +781,8 @@ td.who-c { font-weight: 600; }
     document.getElementById("mExport").hidden = !canExp;
     var mb = document.getElementById("btnMore"); var mtv = document.getElementById("mTv"); mtv.hidden = !(rosterTab && r);
     mb.hidden = document.getElementById("mEdit").hidden && !canExp && document.getElementById("mLock").hidden && mtv.hidden;
-    document.body.classList.toggle("tv", state.tv); document.getElementById("tvExit").hidden = !state.tv;
+    document.body.classList.toggle("tv", state.tv); document.body.classList.toggle("discrete", state.discrete || state.tv);
+    var bd = document.getElementById("btnDisc"); bd.setAttribute("aria-checked", state.discrete ? "true" : "false"); document.getElementById("discHint").textContent = state.discrete ? "IN/OUT times are hidden here, they stay in the log." : "IN/OUT times are shown next to each name."; document.getElementById("tvExit").hidden = !state.tv;
     if (mb.hidden) closeMenu();
     var sumEl = document.getElementById("summary");
     if (state.ready && !state.error) {
@@ -897,6 +923,7 @@ td.who-c { font-weight: 600; }
     if (act === "log-toggle") { var lk = b.getAttribute("data-log"); logOpen[lk] = !logOpen[lk]; lsSet("dutysignin.logopen." + lk, logOpen[lk]); render(); return; }
     if (act === "tab") { showTab(b.getAttribute("data-tab")); return; }
     if (act === "export") { exportCsv().catch(function () { showToast("Export is not available here."); }); return; }
+    if (act === "discrete") { state.discrete = !state.discrete; lsSet("dutysignin.discrete", state.discrete); render(); return; }
     if (act === "tv") { setTv(true); return; }
     if (act === "tv-exit") { setTv(false); return; }
     if (act === "log-delete") { if (state.writable) openDlg(b.getAttribute("data-log") === "visitors" ? "visitors" : "roster"); return; }
@@ -944,6 +971,22 @@ td.who-c { font-weight: 600; }
       var dt = new Date(); dt.setDate(dt.getDate() + 1);
       var arr = lastDep || (dt.getFullYear() + "-" + pad(dt.getMonth() + 1) + "-" + pad(dt.getDate()));
       var rid = newId("p"); dr.people.push({ id: rid, name: "Relief person", phone: "", slot: sk2, pos: ap, arrive: arr }); saveRoster(rr);
+    } else if (act === "slot-up" || act === "slot-down") {
+      var rm = clone(state.roster), dm = rm.depts.find(function (x) { return x.id === dId; }), mk = b.getAttribute("data-slot");
+      var sls = slotsOf(dm), mi = sls.findIndex(function (x) { return x.key === mk; }), mj = act === "slot-up" ? mi - 1 : mi + 1;
+      if (mi < 0 || mj < 0 || mj >= sls.length) return;
+      var tmp = sls[mi]; sls[mi] = sls[mj]; sls[mj] = tmp;
+      dm.people = [].concat.apply([], sls.map(function (x) { return x.members; })); saveRoster(rm);
+    } else if (act === "dept-up" || act === "dept-down") {
+      var rd = clone(state.roster), di = rd.depts.findIndex(function (x) { return x.id === dId; }), dj = act === "dept-up" ? di - 1 : di + 1;
+      if (di < 0 || dj < 0 || dj >= rd.depts.length) return;
+      var t2 = rd.depts[di]; rd.depts[di] = rd.depts[dj]; rd.depts[dj] = t2; saveRoster(rd);
+    } else if (act === "add-below") {
+      var rb = clone(state.roster), db2 = rb.depts.find(function (x) { return x.id === dId; }), bk = b.getAttribute("data-slot");
+      normalize(db2);
+      var bsl = slotsOf(db2).find(function (x) { return x.key === bk; }); if (!bsl) return;
+      var lastIdx = db2.people.indexOf(bsl.members[bsl.members.length - 1]), bid = newId("p");
+      db2.people.splice(lastIdx + 1, 0, { id: bid, name: "New person", phone: "", slot: bid, pos: bsl.pos }); saveRoster(rb);
     } else if (act === "remove-person") {
       if (openEntries().some(function (e) { return e.pid === pId; })) { showToast("Slide this person to OUT before removing them."); return; }
       var r2 = clone(state.roster), d2 = r2.depts.find(function (x) { return x.id === dId; });
@@ -953,6 +996,18 @@ td.who-c { font-weight: 600; }
 
   document.addEventListener("change", function (ev) {
     var t = ev.target, kind = t.getAttribute && t.getAttribute("data-edit");
+    if (t.getAttribute && t.getAttribute("data-moveslot")) {
+      var toId = t.value; if (!toId) return;
+      var rv = clone(state.roster), from = rv.depts.find(function (x) { return x.id === t.getAttribute("data-d"); }), to = rv.depts.find(function (x) { return x.id === toId; });
+      var mkey = t.getAttribute("data-slot");
+      if (!from || !to) return;
+      var mem = from.people.filter(function (m) { return (m.slot || m.id) === mkey; });
+      if (mem.some(function (m) { return openEntries().some(function (e) { return e.pid === m.id; }); })) { showToast("Slide this person to OUT before moving the position."); render(); return; }
+      from.people = from.people.filter(function (m) { return (m.slot || m.id) !== mkey; });
+      mem.forEach(function (m) { m.slot = mkey; to.people.push(m); });
+      if (from.active && from.active[mkey]) { to.active = to.active || {}; to.active[mkey] = from.active[mkey]; delete from.active[mkey]; }
+      saveRoster(rv); showToast("Moved to " + to.name); return;
+    }
     if (t.getAttribute && t.getAttribute("data-swap")) { swapActive(t.getAttribute("data-d"), t.getAttribute("data-slot"), t.value); return; }
     if (!kind || !state.roster) return;
     var val = t.value.trim();
