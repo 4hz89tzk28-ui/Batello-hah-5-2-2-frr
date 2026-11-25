@@ -134,6 +134,11 @@ button, input, select { font: inherit; color: inherit; }
   -webkit-mask-size: contain; mask-size: contain;
 }
 .clock { margin: 0; font-size: 13px; font-weight: 500; color: var(--brand-sub); font-variant-numeric: tabular-nums; }
+button.clock { appearance: none; -webkit-appearance: none; display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255, 255, 255, 0.22); background: rgba(255, 255, 255, 0.10); font-family: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+button.clock svg { flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; opacity: 0.85; }
+button.clock.adj { border-color: var(--duty); }
+.tv button.clock { pointer-events: none; background: none; border-color: transparent; }
+.tv button.clock svg { display: none; }
 
 /* Tab bar and buttons */
 .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; }
@@ -169,13 +174,13 @@ button, input, select { font: inherit; color: inherit; }
 .name-input-lg { flex: 1 1 0; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); font-size: 17px; font-weight: 700; letter-spacing: -0.015em; }
 
 .people { list-style: none; margin: 0; padding: 0; }
-.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 7px 16px; border-bottom: 1px solid var(--hairline); }
+.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--hairline); }
 .who2 { min-width: 0; display: flex; flex-direction: column; gap: 2px; }
-.pos { font-size: 11.5px; line-height: 1.2; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.l2 { display: grid; grid-template-columns: minmax(70px, 1.1fr) 140px 112px minmax(118px, 1fr); column-gap: 10px; align-items: baseline; min-width: 0; }
-.l2 .nm { font-size: 16px; line-height: 1.25; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pos { font-size: 12.5px; line-height: 1.2; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.l2 { display: grid; grid-template-columns: minmax(0, 1.2fr) 150px minmax(124px, 1fr); column-gap: 10px; align-items: baseline; min-width: 0; }
+.l2 .nm { font-size: 20px; line-height: 1.25; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .nm.muted { color: var(--muted); font-weight: 500; }
-.row.relief { grid-template-columns: minmax(0, 1fr) 212px; padding-top: 1px; padding-bottom: 8px; }
+.row.relief { grid-template-columns: minmax(0, 1fr) 264px; padding-top: 1px; padding-bottom: 8px; }
 .row.relief .l2 .nm { font-size: 14px; color: var(--muted); }
 .row.relief .st, .row.relief .so { color: var(--muted); font-weight: 500; }
 .arrow { color: var(--in-ink); font-weight: 800; margin-right: 3px; }
@@ -184,7 +189,8 @@ button, input, select { font: inherit; color: inherit; }
 .row.edit .ph-input { flex: 1 1 150px; }
 .row.slot-head { padding-bottom: 0; border-bottom: 0; }
 .row.slot-add { border-bottom: 1px solid var(--hairline); }
-.row .pos-input { flex: 1 1 100%; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); font-size: 16px; font-weight: 700; }
+.slotgrp > ul > .row.slot-add { border-bottom: 1px solid var(--hairline); }
+.row .pos-input { flex: 1 1 200px; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); font-size: 16px; font-weight: 700; }
 .row:last-child { border-bottom: 0; }
 .row.edit { display: flex; flex-wrap: wrap; gap: 6px 8px; }
 .row .name-input { flex: 1 1 100%; min-width: 0; min-height: 40px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); font-size: 16px; font-weight: 500; }
@@ -200,6 +206,9 @@ button, input, select { font: inherit; color: inherit; }
 .row.is-in .st { color: var(--in-ink); }
 .row.is-duty .st { color: var(--duty-ink); }
 .ph, .st, .so { overflow: hidden; text-overflow: ellipsis; }
+.l2 .ph, .l2 .st, .l2 .so { font-size: 14px; }
+.discrete .l2 { grid-template-columns: minmax(0, 1.3fr) minmax(160px, 1fr); }
+.discrete .l2 .st { display: none; }
 .so { font-size: 12.5px; line-height: 1.25; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; min-width: 0; }
 .so.soon { color: var(--in-ink); font-weight: 700; }
 .so.late { color: var(--warn); font-weight: 700; }
@@ -221,9 +230,9 @@ button, input, select { font: inherit; color: inherit; }
 .log-win td { height: 38px; padding-top: 0; padding-bottom: 0; white-space: nowrap; }
 
 /* Liquid-glass slider IN | OUT and DUTY bubble */
-.ctl { display: grid; grid-template-columns: 132px 72px; align-items: center; column-gap: 8px; justify-self: end; }
+.ctl { display: grid; grid-template-columns: 168px 88px; align-items: center; column-gap: 8px; justify-self: end; }
 .seg {
-  position: relative; display: block; width: 132px; height: 38px; padding: 0; border-radius: 999px; cursor: pointer;
+  position: relative; display: block; width: 168px; height: 48px; padding: 0; border-radius: 999px; cursor: pointer;
   -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent; touch-action: manipulation;
   background: var(--track); border: 1px solid var(--track-line);
   box-shadow: inset 0 1px 3px var(--track-shadow), inset 0 -1px 0 var(--hi);
@@ -238,7 +247,7 @@ button, input, select { font: inherit; color: inherit; }
 .seg[data-state="out"] .pill-bg { transform: translateX(100%); background-color: var(--out); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85), inset 0 -2px 3px rgba(0, 0, 0, 0.14), 0 0 0 0.5px rgba(255, 255, 255, 0.5), 0 3px 8px rgba(120, 20, 18, 0.32); }
 .seg-b {
   position: absolute; top: 0; bottom: 0; width: calc((100% - 6px) / 2); display: flex; align-items: center; justify-content: center;
-  font-size: 12px; line-height: 1; font-weight: 700; letter-spacing: 0.03em; color: var(--muted); transition: color 0.25s ease; pointer-events: none;
+  font-size: 15px; line-height: 1; font-weight: 700; letter-spacing: 0.03em; color: var(--muted); transition: color 0.25s ease; pointer-events: none;
 }
 .seg-b[data-s="in"] { left: 3px; }
 .seg-b[data-s="out"] { right: 3px; }
@@ -246,10 +255,10 @@ button, input, select { font: inherit; color: inherit; }
 .seg[data-state="out"] .seg-b[data-s="out"] { color: var(--on-out); text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25); }
 .seg:disabled, .tag:disabled { cursor: default; }
 .tag {
-  width: 72px; height: 38px; display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 999px;
+  width: 88px; height: 48px; display: flex; align-items: center; justify-content: center; padding: 0; border-radius: 999px;
   border: 1px solid var(--track-line); background-color: var(--track);
   box-shadow: inset 0 1px 3px var(--track-shadow), inset 0 -1px 0 var(--hi);
-  font-size: 12px; line-height: 1; font-weight: 700; letter-spacing: 0.02em; color: var(--muted); cursor: pointer;
+  font-size: 14px; line-height: 1; font-weight: 700; letter-spacing: 0.02em; color: var(--muted); cursor: pointer;
   -webkit-tap-highlight-color: transparent; touch-action: manipulation;
   transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
 }
@@ -319,16 +328,21 @@ td.who-c { font-weight: 600; }
 }
 #toast button { border: 0; background: transparent; color: inherit; font-weight: 700; text-decoration: underline; cursor: pointer; min-height: 36px; padding: 0 6px; }
 
-@media (max-width: 700px) {
-  .l2 { display: flex; flex-wrap: wrap; column-gap: 10px; row-gap: 0; }
-  .l2 .nm { flex: 1 1 100%; }
+@media (max-width: 960px) {
+  body:not(.discrete) .l2 { display: flex; flex-wrap: wrap; column-gap: 12px; row-gap: 0; }
+  body:not(.discrete) .l2 .nm { flex: 0 1 auto; max-width: 100%; }
+  body:not(.discrete) .l2 .ph, body:not(.discrete) .l2 .st, body:not(.discrete) .l2 .so { overflow: visible; white-space: normal; }
+}
+@media (max-width: 860px) {
+  .l2 { display: flex; flex-wrap: wrap; column-gap: 12px; row-gap: 0; }
+  .l2 .nm { flex: 0 1 auto; max-width: 100%; }
   .l2 .ph, .l2 .st, .l2 .so { overflow: visible; white-space: normal; }
 }
 @media (max-width: 520px) { .logo { height: 32px; } }
 @media (prefers-reduced-motion: reduce) { .seg .pill-bg, .seg-b, .tag { transition: none; } }
 .log-tog.dg { color: var(--warn); }
-#dlg { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(10, 20, 40, 0.5); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
-#dlg[hidden] { display: none; }
+#dlg, #clockDlg { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 20px; background: rgba(10, 20, 40, 0.5); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); }
+#dlg[hidden], #clockDlg[hidden] { display: none; }
 .dlg-card { width: 100%; max-width: 420px; padding: 20px; border-radius: 26px; background: var(--sticky); border: 1px solid var(--hairline); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.4); color: var(--ink); font-family: var(--font); }
 .dlg-card h2 { margin: 0 0 8px; font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
 .dlg-card p { margin: 0 0 12px; font-size: 14px; line-height: 1.4; color: var(--muted); }
@@ -337,20 +351,72 @@ td.who-c { font-weight: 600; }
 .dlg-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
 .dlg-actions .btn { flex: 1 1 140px; min-height: 46px; }
 .dlg-actions .go { background: var(--out); color: var(--on-out); border-color: transparent; }
-.ro-b { display: flex; align-items: center; justify-content: center; height: 36px; border-radius: 999px; font-size: 14px; font-weight: 800; letter-spacing: 0.05em; }
+.ro-b { display: flex; align-items: center; justify-content: center; height: 46px; border-radius: 999px; font-size: 16px; font-weight: 800; letter-spacing: 0.05em; }
 .ro-b.in { background: var(--in); color: var(--on-in); }
 .ro-b.out { background: var(--out); color: var(--on-out); }
 .ro-b.duty { background: var(--duty); color: var(--on-duty); }
 .tv-exit { position: fixed; right: 14px; bottom: 14px; z-index: 50; opacity: 0.35; }
 .tv-exit[hidden] { display: none; }
 .tv .tabs, .tv .tools, .tv .log { display: none; }
-.tv .l2 { grid-template-columns: minmax(120px, 1.1fr) 170px 150px minmax(150px, 1fr); }
-.tv .l2 .nm { font-size: 20px; }
+.tv .l2 { grid-template-columns: minmax(120px, 1.1fr) minmax(170px, 1fr); }
+.tv .l2 .nm { font-size: 24px; }
 .tv .pos { font-size: 13px; }
 .tv .ph, .tv .st, .tv .so { font-size: 15px; }
 .tv .row { padding-top: 9px; padding-bottom: 9px; }
 .swap { appearance: none; -webkit-appearance: none; max-width: 100%; margin: 0; padding: 0 20px 0 0; border: 0; border-radius: 0; background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1.5 1.5l4.5 4.5 4.5-4.5' fill='none' stroke='%238a94a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right center; color: inherit; font: inherit; font-weight: 600; line-height: 1.25; text-overflow: ellipsis; cursor: pointer; }
 .swap:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.mv { display: flex; align-items: center; gap: 6px; flex: 0 0 auto; }
+.btn.ic { min-width: 42px; min-height: 40px; padding: 0 10px; font-size: 18px; line-height: 1; }
+.btn.ic:disabled { opacity: 0.35; }
+.mv select { min-height: 40px; max-width: 150px; padding: 0 10px; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); color: var(--ink); font: 600 14px var(--font); }
+.dgroup-head .mv { margin-left: auto; }
+.foot { display: flex; align-items: center; gap: 12px; margin: 18px 4px 0; }
+.disc { appearance: none; -webkit-appearance: none; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 8px 0 16px; border-radius: 999px; border: 1px solid var(--hairline); background: var(--glass); color: var(--ink); font: 700 15px var(--font); cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.disc-s { position: relative; width: 50px; height: 30px; border-radius: 999px; background: var(--track); border: 1px solid var(--track-line); transition: background-color 0.25s ease; }
+.disc-s::after { content: ""; position: absolute; top: 2px; left: 2px; width: 24px; height: 24px; border-radius: 50%; background: #fff; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); transition: transform 0.3s cubic-bezier(0.34, 1.5, 0.5, 1); }
+.disc[aria-checked="true"] .disc-s { background: var(--in); }
+.disc[aria-checked="true"] .disc-s::after { transform: translateX(20px); }
+.disc-h { font-size: 13px; color: var(--muted); }
+.tv .foot { display: none; }
+.tv .store { display: none; }
+/* drag handle */
+.grip { appearance: none; -webkit-appearance: none; flex: 0 0 auto; display: inline-flex; align-items: center; justify-content: center; width: 40px; min-height: 40px; padding: 0; border-radius: 12px; border: 1px solid var(--hairline); background: var(--field); color: var(--muted); cursor: grab; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+.grip svg { fill: currentColor; display: block; pointer-events: none; }
+.grip:active { cursor: grabbing; }
+.slotgrp { list-style: none; }
+.slotgrp > ul { list-style: none; margin: 0; padding: 0; }
+.slotgrp, .dgroup { will-change: auto; }
+.dragging { position: relative; z-index: 20; background: var(--sticky); border-radius: 16px; box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28); transition: none !important; }
+.shifting { transition: transform 0.18s ease; }
+body.drag-on { -webkit-user-select: none; user-select: none; cursor: grabbing; }
+.row.slot-head .pos-input { flex: 1 1 150px; }
+/* plus / minus for a second person on the same position */
+.posline { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.posline .pos { min-width: 0; }
+.pmwrap { position: relative; display: inline-flex; flex: none; }
+.pm { appearance: none; -webkit-appearance: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; border-radius: 50%; border: 1px solid var(--hairline); font: 800 18px/1 var(--font); cursor: pointer; -webkit-tap-highlight-color: transparent; box-shadow: inset 0 1px 0 var(--hi); }
+.pm.plus { background: var(--in-soft); color: var(--in-ink); border-color: transparent; }
+.pm.minus { background: var(--field); color: var(--warn); }
+.pmsel { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font-size: 16px; }
+/* storage */
+.store { display: flex; flex-direction: column; gap: 6px; margin: 14px 4px 0; font-size: 13px; color: var(--muted); }
+.store-top { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.store-top b { color: var(--ink); font-weight: 700; }
+.store-bar { height: 8px; border-radius: 999px; background: var(--track); overflow: hidden; max-width: 420px; }
+.store-bar i { display: block; height: 100%; border-radius: 999px; background: var(--in); }
+.store-bar i.mid { background: var(--duty); }
+.store-bar i.hi { background: var(--out); }
+.store small { font-size: 12px; line-height: 1.35; }
+.ck-now { margin: 0 0 4px; font-size: 34px; line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; }
+.ck-date { margin: 0 0 10px; font-size: 15px; font-weight: 600; color: var(--muted); }
+.ck-status { margin: 0 0 14px; padding: 8px 12px; border-radius: 12px; background: var(--in-soft); color: var(--in-ink); font-size: 13px; font-weight: 600; }
+.ck-status.adj { background: var(--duty-soft); color: var(--duty-ink); }
+.ck-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.ck-row .btn { flex: 1 1 70px; min-height: 44px; font-variant-numeric: tabular-nums; }
+.ck-set { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 14px; }
+.ck-set input { flex: 1 1 200px; min-width: 0; min-height: 46px; padding: 0 12px; border-radius: 14px; border: 1px solid var(--hairline); background: var(--field); color: var(--ink); font: 600 16px var(--font); }
+.ck-set .btn { min-height: 46px; }
+
 </style>
 
 <style>
@@ -370,7 +436,7 @@ td.who-c { font-weight: 600; }
 <div class="wrap">
   <header class="brand">
     <div class="logo" role="img" aria-label="Batello"></div>
-    <p class="clock" id="clock"></p>
+    <button type="button" class="clock" id="clock" data-act="clock" aria-label="Date and time. Tap to adjust"><span id="clockTxt"></span><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.6V8l2.3 1.5"/></svg></button>
   </header>
 
   <div class="bar">
@@ -385,7 +451,7 @@ td.who-c { font-weight: 600; }
       <div class="menu-wrap">
         <button class="btn more" id="btnMore" data-act="menu" aria-haspopup="menu" aria-expanded="false" aria-label="More options" hidden><svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><circle cx="3.5" cy="10" r="1.9"/><circle cx="10" cy="10" r="1.9"/><circle cx="16.5" cy="10" r="1.9"/></svg></button>
         <div class="menu" id="menu" role="menu" hidden>
-          <button class="menu-i" id="mEdit" role="menuitem" data-act="edit-toggle">Edit names and dates</button>
+          <button class="menu-i" id="mEdit" role="menuitem" data-act="edit-toggle">Edit names and positions</button>
           <button class="menu-i" id="mExport" role="menuitem" data-act="export">Export CSV</button>
           <button class="menu-i" id="mTv" role="menuitem" data-act="tv" hidden>TV mode (read-only)</button>
           <button class="menu-i" id="mLock" role="menuitem" data-act="lock" hidden>Lock app</button>
@@ -396,6 +462,7 @@ td.who-c { font-weight: 600; }
 
   <section id="panelRoster" role="tabpanel" aria-labelledby="tabRoster">
     <div id="main"><p class="note">Loading…</p></div>
+    <div class="foot"><button type="button" class="disc" id="btnDisc" role="switch" aria-checked="true" data-act="discrete"><span>Discrete</span><span class="disc-s"></span></button><span class="disc-h" id="discHint"></span></div>
   </section>
 
   <section id="panelVisitors" role="tabpanel" aria-labelledby="tabVis" hidden>
@@ -426,6 +493,22 @@ td.who-c { font-weight: 600; }
 </div>
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <button class="btn tv-exit" id="tvExit" data-act="tv-exit" hidden>Exit TV mode</button>
+<div id="clockDlg" hidden><div class="dlg-card" role="dialog" aria-modal="true" aria-labelledby="ckTitle">
+  <h2 id="ckTitle">Date and time</h2>
+  <p class="ck-now" id="ckNow"></p>
+  <p class="ck-date" id="ckDate"></p>
+  <p class="ck-status" id="ckStatus"></p>
+  <div class="ck-row">
+    <button class="btn" data-act="clock-shift" data-min="-60">&minus;1 h</button>
+    <button class="btn" data-act="clock-shift" data-min="60">+1 h</button>
+    <button class="btn" data-act="clock-shift" data-min="-10">&minus;10 min</button>
+    <button class="btn" data-act="clock-shift" data-min="10">+10 min</button>
+  </div>
+  <label class="dlg-l" for="ckInput">Set the exact date and time</label>
+  <div class="ck-set"><input id="ckInput" type="datetime-local"><button class="btn primary" data-act="clock-set">Set</button></div>
+  <p>The clock follows this device automatically. Use the buttons when the boat changes time zone. The change is shared with every screen and is used for all new IN/OUT times.</p>
+  <div class="dlg-actions"><button class="btn" id="ckReset" data-act="clock-reset">Back to device clock</button><button class="btn go-ok primary" data-act="clock-close">Done</button></div>
+</div></div>
 <div id="dlg" hidden><div class="dlg-card" role="dialog" aria-modal="true" aria-labelledby="dlgTitle">
   <h2 id="dlgTitle">Delete old entries</h2>
   <p id="dlgInfo">Loading…</p>
@@ -437,7 +520,7 @@ td.who-c { font-weight: 600; }
 <script>
 (function () {
   var LS_R = "dutysignin.roster", LS_L = "dutysignin.log", LS_V = "dutysignin.visitors";
-  var state = { roster: null, log: [], visitors: [], ready: false, editing: false, writable: true, online: false, error: "", tab: "roster", tv: /tv/i.test(location.hash) };
+  var state = { roster: null, log: [], visitors: [], ready: false, editing: false, writable: true, online: false, error: "", tab: "roster", tv: /tv/i.test(location.hash), discrete: true };
   var db = null, downloads = null;
   var main = document.getElementById("main");
   var toastEl = document.getElementById("toast");
@@ -450,10 +533,8 @@ td.who-c { font-weight: 600; }
   function fmtIso(ms) { var d = new Date(ms); return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes()); }
   function newId(p) { return p + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
   function clone(o) { return JSON.parse(JSON.stringify(o)); }
-  function dayNum(iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ""); return m ? Math.round(new Date(+m[1], +m[2] - 1, +m[3]).getTime() / 86400000 - (new Date().getTimezoneOffset() - new Date(+m[1], +m[2] - 1, +m[3]).getTimezoneOffset()) / 1440) : null; }
-  function todayNum() { var d = new Date(); return Math.round(new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime() / 86400000); }
+  function todayNum() { var d = new Date(now()); return Math.round(new Date(d.getFullYear(), d.getMonth(), d.getDate()).getTime() / 86400000); }
   function fmtDay(iso) { var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || ""); return m ? m[3] + "/" + m[2] + "/" + m[1] : ""; }
-  function isHome(p) { var t = todayNum(), a = dayNum(p.arrive), d = dayNum(p.depart); return (a !== null && a > t) || (d !== null && d < t); }
   function slotsOf(d) {
     var slots = [], by = {};
     d.people.forEach(function (p) {
@@ -464,26 +545,28 @@ td.who-c { font-weight: 600; }
     });
     return slots;
   }
+  function normalize(d) { d.people = [].concat.apply([], slotsOf(d).map(function (sl) { return sl.members; })); }
   function activeOf(d, sl) {
     var id = d.active && d.active[sl.key], m = id && sl.members.find(function (x) { return x.id === id; });
-    if (m) return m;
-    return sl.members.filter(function (x) { return !isHome(x); }).sort(byArrive)[0] || sl.members[0];
+    return m || sl.members[0];
   }
-  function activeSet(d) { var o = {}; slotsOf(d).forEach(function (sl) { o[activeOf(d, sl).id] = true; }); return o; }
-  function byArrive(x, y) { var a = dayNum(x.arrive), b = dayNum(y.arrive); return (a === null ? -1e9 : a) - (b === null ? -1e9 : b); }
-  function signOff(p) {
-    var t = todayNum(), a = dayNum(p.arrive), dp = dayNum(p.depart), txt = "", cls = "", tip = "";
-    if (p.arrive || p.depart) tip = (p.arrive ? "Arrived " + fmtDay(p.arrive) : "") + (p.arrive && p.depart ? " · " : "") + (p.depart ? "Departs " + fmtDay(p.depart) : "");
-    if (dp !== null) {
-      var n = dp - t;
-      if (n < 0) { txt = "Overdue " + (-n) + (n === -1 ? " day" : " days"); cls = " late"; }
-      else if (n === 0) { txt = "Sign-off today"; cls = " soon"; }
-      else { txt = "Sign-off in " + n + (n === 1 ? " day" : " days"); if (n <= 7) cls = " soon"; }
-    }
-    return { txt: txt, cls: cls, tip: tip, days: dp === null ? null : dp - t };
+  /* people shown as onboard on a position besides the main one (the "+" / "-" buttons) */
+  function extraIds(d, key) { return (d.extra && d.extra[key]) || []; }
+  function activeSet(d) {
+    var o = {};
+    slotsOf(d).forEach(function (sl) {
+      o[activeOf(d, sl).id] = true;
+      extraIds(d, sl.key).forEach(function (id) { if (sl.members.some(function (m) { return m.id === id; })) o[id] = true; });
+    });
+    return o;
   }
   function lsGet(k, def) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : def; } catch (e) { return def; } }
   function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+  state.discrete = lsGet("dutysignin.discrete", true) !== false;
+  /* Ship time = device clock + a manual offset (for time-zone changes at sea). Offset 0 means "follow the device". */
+  var LS_T = "dutysignin.timeoffset", timeOffset = Number(lsGet(LS_T, 0)) || 0;
+  function now() { return Date.now() + timeOffset; }
+  state.store = lsGet("dutysignin.store", null); state.storeBusy = false; state.dragging = false;
 
   function defaultRoster() {
     var counts = [10, 5, 4];
@@ -539,7 +622,7 @@ td.who-c { font-weight: 600; }
 
   /* target: in | out | duty | clear (back to plain IN). DUTY also signs the person IN and takes duty over from whoever had it in the department. */
   function setTo(dept, person, target) {
-    var open = openEntries(), cur = open.find(function (e) { return e.pid === person.id; }), t = Date.now();
+    var open = openEntries(), cur = open.find(function (e) { return e.pid === person.id; }), t = now();
     if ((target === "in" && cur) || (target === "clear" && !cur) || stateOf(cur) === target) return;
     if (target === "out") {
       var wasDuty = !!cur.duty;
@@ -578,7 +661,7 @@ td.who-c { font-weight: 600; }
   function deptList() { return state.roster && state.roster.depts ? state.roster.depts : []; }
   function addVisitor(name, company, badge, deptId, personId) {
     var d = deptList().find(function (x) { return x.id === deptId; }), pr = d && d.people.find(function (x) { return x.id === personId; });
-    var v = { name: name, company: company, badge: badge, leader: deptId, leaderPid: personId || "", deptName: d ? d.name : "", leaderName: pr ? pr.name : "", inAt: Date.now(), outAt: null };
+    var v = { name: name, company: company, badge: badge, leader: deptId, leaderPid: personId || "", deptName: d ? d.name : "", leaderName: pr ? pr.name : "", inAt: now(), outAt: null };
     var id;
     if (db) {
       var ref = db.collection("visitors").doc(); id = ref.id; enqueue(function () { return ref.set(v); });
@@ -610,15 +693,20 @@ td.who-c { font-weight: 600; }
     return '<div class="ctl">' + sw + tg + "</div>";
   }
 
+  function gripHTML(kind, deptId, slotKey) {
+    return '<button type="button" class="grip" data-drag="' + kind + '" data-d="' + esc(deptId) + '"' + (slotKey ? ' data-slot="' + esc(slotKey) + '"' : "") + ' aria-label="Drag to reorder ' + (kind === "dept" ? "department" : "position") + '" title="Drag to reorder"><svg width="14" height="20" viewBox="0 0 14 20" aria-hidden="true"><circle cx="4" cy="4" r="1.7"/><circle cx="10" cy="4" r="1.7"/><circle cx="4" cy="10" r="1.7"/><circle cx="10" cy="10" r="1.7"/><circle cx="4" cy="16" r="1.7"/><circle cx="10" cy="16" r="1.7"/></svg></button>';
+  }
+
   function deptHTML(d, i) {
     var open = openEntries();
     var inDept = open.filter(function (e) { return e.dept === d.id; });
     var duty = inDept.find(function (e) { return e.duty; });
     var head;
     if (state.editing) {
-      head = '<header class="dgroup-head"><input class="name-input-lg" id="dn-' + esc(d.id) + '" data-edit="dname" data-d="' + esc(d.id) + '" value="' + esc(d.name) + '" aria-label="Department name"><button class="btn quiet danger" data-act="remove-dept" data-d="' + esc(d.id) + '">Remove dept</button></header>';
+      head = '<header class="dgroup-head">' + gripHTML("dept", d.id) + '<input class="name-input-lg" id="dn-' + esc(d.id) + '" data-edit="dname" data-d="' + esc(d.id) + '" value="' + esc(d.name) + '" aria-label="Department name"><button class="btn quiet danger" data-act="remove-dept" data-d="' + esc(d.id) + '">Remove dept</button></header>';
     } else {
-      head = '<header class="dgroup-head"><div class="dtitle"><h2>' + esc(d.name) + '</h2><span class="count">' + inDept.length + " / " + d.people.filter(function (m) { var as = activeSet(d); return as[m.id] || inDept.some(function (e) { return e.pid === m.id; }); }).length + ' in</span></div>' +
+      var as0 = activeSet(d), total = d.people.filter(function (m) { return as0[m.id] || inDept.some(function (e) { return e.pid === m.id; }); }).length;
+      head = '<header class="dgroup-head"><div class="dtitle"><h2>' + esc(d.name) + '</h2><span class="count">' + inDept.length + " / " + total + ' in</span></div>' +
         (duty ? '<div class="dutybar"><span class="dot"></span><span class="t">On duty: ' + esc(duty.name) + '</span></div>' : "") + '</header>';
     }
     var openPids = {}; open.forEach(function (e) { openPids[e.pid] = true; });
@@ -627,16 +715,14 @@ td.who-c { font-weight: 600; }
     function editRow(p) {
       return '<li class="row edit"><input class="name-input" id="pn-' + esc(p.id) + '" data-edit="pname" data-d="' + esc(d.id) + '" data-p="' + esc(p.id) + '" value="' + esc(p.name) + '" aria-label="Name">' +
         '<input class="ph-input" type="tel" inputmode="tel" placeholder="Phone" data-edit="pphone" data-d="' + esc(d.id) + '" data-p="' + esc(p.id) + '" value="' + esc(p.phone || "") + '" aria-label="Phone number">' +
-        '<button class="btn quiet danger" data-act="remove-person" data-d="' + esc(d.id) + '" data-p="' + esc(p.id) + '">Remove</button>' +
-        '<div class="dates"><label>Arrival<input type="date" data-edit="parrive" data-d="' + esc(d.id) + '" data-p="' + esc(p.id) + '" value="' + esc(p.arrive || "") + '"></label>' +
-        '<label>Departure<input type="date" data-edit="pdepart" data-d="' + esc(d.id) + '" data-p="' + esc(p.id) + '" value="' + esc(p.depart || "") + '"></label></div></li>';
+        '<button class="btn quiet danger" data-act="remove-person" data-d="' + esc(d.id) + '" data-p="' + esc(p.id) + '">Remove</button></li>';
     }
     function nameHTML(p, sl) {
-      if (sl.members.length < 2 || state.tv || !state.writable) return esc(p.name);
+      if (sl.members.length < 2 || state.tv || !state.writable || p.id !== activeOf(d, sl).id) return esc(p.name);
       return '<select class="swap" data-swap="1" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" aria-label="Who is ' + esc(sl.pos || "on this position") + '">' +
         sl.members.map(function (m) { return '<option value="' + esc(m.id) + '"' + (m.id === p.id ? " selected" : "") + ">" + esc(m.name) + "</option>"; }).join("") + "</select>";
     }
-    function personRow(p, pos, sl) {
+    function personRow(p, pos, sl, act, hidden) {
       var oe = open.find(function (e) { return e.pid === p.id; });
       var s = stateOf(oe), st;
       if (s === "duty") st = "DUTY " + fmtShort(oe.dutyAt || oe.inAt);
@@ -645,22 +731,32 @@ td.who-c { font-weight: 600; }
         var last = state.log.find(function (e) { return e.pid === p.id && e.outAt; });
         st = last ? "OUT " + fmtShort(last.outAt) : "";
       }
-      var so = signOff(p);
-      return '<li class="row' + (s !== "out" ? " is-" + s : "") + '"><div class="who2">' + (pos ? '<span class="pos">' + esc(pos) + "</span>" : "") +
-        '<div class="l2"><span class="nm">' + nameHTML(p, sl) + "</span>" + phoneHTML(p) + '<span class="st">' + esc(st) + '</span><span class="so' + so.cls + '"' + (so.tip ? ' title="' + esc(so.tip) + '"' : "") + ">" + esc(so.txt) + "</span></div></div>" + ctlHTML(d, p, s) + "</li>";
+      var ids = ' data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '"', ctrl = "";
+      if (!state.tv && state.writable && sl.members.length > 1) {
+        if (p.id !== act.id) ctrl = '<button type="button" class="pm minus" data-act="hide-extra"' + ids + ' data-p="' + esc(p.id) + '" aria-label="Take ' + esc(p.name) + ' off this position" title="Take off">&minus;</button>';
+        else if (hidden.length === 1) ctrl = '<button type="button" class="pm plus" data-act="show-extra"' + ids + ' data-p="' + esc(hidden[0].id) + '" aria-label="Also put ' + esc(hidden[0].name) + ' onboard" title="Also onboard: ' + esc(hidden[0].name) + '">+</button>';
+        else if (hidden.length > 1) ctrl = '<span class="pmwrap"><span class="pm plus" aria-hidden="true">+</span><select class="pmsel" data-addextra="1"' + ids + ' aria-label="Also put someone else onboard"><option value="">Add…</option>' +
+          hidden.map(function (m) { return '<option value="' + esc(m.id) + '">' + esc(m.name) + "</option>"; }).join("") + "</select></span>";
+      }
+      var top = (pos || ctrl) ? '<div class="posline">' + (pos ? '<span class="pos">' + esc(pos) + "</span>" : "") + ctrl + "</div>" : "";
+      return '<li class="row' + (s !== "out" ? " is-" + s : "") + '"><div class="who2">' + top +
+        '<div class="l2"><span class="nm">' + nameHTML(p, sl) + "</span>" + phoneHTML(p) + '<span class="st">' + esc(st) + "</span></div></div>" + ctlHTML(d, p, s) + "</li>";
     }
     var rows = slots.map(function (sl) {
       if (state.editing) {
-        return '<li class="row edit slot-head"><input class="pos-input" data-edit="spos" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" value="' + esc(sl.pos) + '" placeholder="Position, e.g. Captain" aria-label="Position"></li>' +
+        return '<li class="slotgrp" data-sgrp="' + esc(sl.key) + '"><ul><li class="row edit slot-head">' + gripHTML("slot", d.id, sl.key) +
+          '<input class="pos-input" data-edit="spos" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" value="' + esc(sl.pos) + '" placeholder="Position, e.g. Captain" aria-label="Position">' +
+          (deptList().length > 1 ? '<span class="mv"><select data-moveslot="1" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '" aria-label="Move to department"><option value="">Move to…</option>' + deptList().filter(function (x) { return x.id !== d.id; }).map(function (x) { return '<option value="' + esc(x.id) + '">' + esc(x.name) + "</option>"; }).join("") + "</select></span>" : "") + "</li>" +
           sl.members.map(editRow).join("") +
-          '<li class="row edit slot-add"><button class="btn quiet" data-act="add-relief" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '">+ Add relief person (rotation)</button></li>';
+          '<li class="row edit slot-add"><button class="btn quiet" data-act="add-relief" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '">+ Add another person to this position</button> <button class="btn quiet" data-act="add-below" data-d="' + esc(d.id) + '" data-slot="' + esc(sl.key) + '">+ Position below</button></li></ul></li>';
       }
-      var act = activeOf(d, sl);
-      var vis = [act].concat(sl.members.filter(function (m) { return m !== act && openPids[m.id]; }));
-      return vis.map(function (m) { return personRow(m, sl.pos, sl); }).join("");
+      var act = activeOf(d, sl), ex = extraIds(d, sl.key);
+      var shown = [act].concat(sl.members.filter(function (m) { return m !== act && (ex.indexOf(m.id) >= 0 || openPids[m.id]); }));
+      var hidden = sl.members.filter(function (m) { return shown.indexOf(m) < 0; });
+      return shown.map(function (m) { return personRow(m, sl.pos, sl, act, hidden); }).join("");
     }).join("");
     var add = state.editing ? '<div class="add-row"><button class="btn quiet" data-act="add-person" data-d="' + esc(d.id) + '">+ Add position</button></div>' : "";
-    return '<section class="dgroup">' + head + '<ul class="people">' + rows + "</ul>" + add + "</section>";
+    return '<section class="dgroup" data-dgrp="' + esc(d.id) + '">' + head + '<ul class="people">' + rows + "</ul>" + add + "</section>";
   }
 
   var logOpen = { roster: lsGet("dutysignin.logopen.roster", true) !== false, visitors: lsGet("dutysignin.logopen.visitors", true) !== false };
@@ -687,10 +783,10 @@ td.who-c { font-weight: 600; }
       html = '<div class="empty"><h2>No departments yet</h2><p>Create three departments with placeholder names (10, 5 and 4 people). Afterwards, use Edit to rename people, add phone numbers, and add or remove departments.</p>' +
         '<button class="btn primary" data-act="setup"' + (state.writable ? "" : " disabled") + ">Set up 3 departments</button></div>";
     } else {
-      html = (state.editing ? '<p class="banner" style="margin-bottom:10px">Editing positions, names, phone numbers and arrival/departure dates. People who share a position rotate: on the main page, pick who is onboard from the name list. Changes save when you leave a field. Sliding is paused until you tap Done.</p>' : "") +
+      html = (state.editing ? '<p class="banner" style="margin-bottom:10px">Editing positions, names and phone numbers. Drag the dotted handle to move a department or a position. Where two people share a position, use the + and − buttons on the main page to have both onboard, or pick who is onboard from the name list. Changes save when you leave a field. Sliding is paused until you tap Done.</p>' : "") +
         '<div class="roster">' + r.depts.map(deptHTML).join("") + "</div>" + (state.editing ? '<p style="margin:10px 0 0"><button class="btn primary" data-act="add-dept">+ Add department</button></p>' : "");
     }
-    main.innerHTML = html + (r && state.ready && !state.error ? '<div style="height:16px"></div>' + logHTML() : "");
+    main.innerHTML = html + (r && state.ready && !state.error ? '<div style="height:16px"></div>' + logHTML() + storageHTML() : "");
     var next = {};
     Array.prototype.forEach.call(main.querySelectorAll(".seg"), function (el) {
       var pid = el.getAttribute("data-pid"), cur = el.getAttribute("data-state"), prev = lastSeg[pid];
@@ -740,10 +836,11 @@ td.who-c { font-weight: 600; }
     document.getElementById("visHist").innerHTML = '<section class="log">' + logHead("Visitor log", count, "visitors") + (!logOpen.visitors ? "" :
       (state.visitors.length
         ? '<div class="scroll log-win"><table><thead><tr><th>Name</th><th>Company</th><th>Badge</th><th>Department</th><th>In charge</th><th>Date IN</th><th>Date OUT</th></tr></thead><tbody>' + rows + "</tbody></table></div>"
-        : '<p class="log-empty">No visits recorded yet.</p>')) + "</section>";
+        : '<p class="log-empty">No visits recorded yet.</p>')) + "</section>" + storageHTML();
   }
 
   function render() {
+    if (state.dragging) return;
     if (state.tv) { state.tab = "roster"; state.editing = false; }
     var a = document.activeElement;
     if (state.editing && a && a.tagName === "INPUT" && state.tab === "roster") return;
@@ -756,7 +853,8 @@ td.who-c { font-weight: 600; }
     document.getElementById("mExport").hidden = !canExp;
     var mb = document.getElementById("btnMore"); var mtv = document.getElementById("mTv"); mtv.hidden = !(rosterTab && r);
     mb.hidden = document.getElementById("mEdit").hidden && !canExp && document.getElementById("mLock").hidden && mtv.hidden;
-    document.body.classList.toggle("tv", state.tv); document.getElementById("tvExit").hidden = !state.tv;
+    document.body.classList.toggle("tv", state.tv); document.body.classList.toggle("discrete", state.discrete || state.tv);
+    var bd = document.getElementById("btnDisc"); bd.setAttribute("aria-checked", state.discrete ? "true" : "false"); document.getElementById("discHint").textContent = state.discrete ? "IN/OUT times are hidden here, they stay in the log." : "IN/OUT times are shown next to each name."; document.getElementById("tvExit").hidden = !state.tv;
     if (mb.hidden) closeMenu();
     var sumEl = document.getElementById("summary");
     if (state.ready && !state.error) {
@@ -775,10 +873,23 @@ td.who-c { font-weight: 600; }
     var old = activeOf(d, sl), nu = sl.members.find(function (m) { return m.id === newPid; });
     if (!nu || nu.id === old.id) { render(); return; }
     d.active = d.active || {}; d.active[key] = nu.id;
+    if (d.extra && d.extra[key]) { d.extra[key] = d.extra[key].filter(function (x) { return x !== nu.id; }); if (!d.extra[key].length) delete d.extra[key]; }
     saveRoster(r);
-    var oe = openEntries().find(function (e) { return e.pid === old.id; }), t = Date.now();
+    var oe = openEntries().find(function (e) { return e.pid === old.id; }), t = now();
     if (oe) setFields(oe.id, { outAt: t });
     showToast(nu.name + " is now " + (sl.pos || "on this position") + (oe ? "; " + old.name + " signed OUT" : ""), function () { saveRoster(prev); if (oe) setFields(oe.id, { outAt: null }); });
+  }
+  function setExtra(deptId, key, pid, on) {
+    if (!state.roster || !state.writable) return;
+    var prev = clone(state.roster), r = clone(state.roster), d = r.depts.find(function (x) { return x.id === deptId; });
+    if (!d) return;
+    var who = d.people.find(function (m) { return m.id === pid; }); if (!who) return;
+    d.extra = d.extra || {};
+    var list = (d.extra[key] || []).filter(function (x) { return x !== pid; });
+    if (on) list.push(pid);
+    if (list.length) d.extra[key] = list; else delete d.extra[key];
+    saveRoster(r);
+    showToast(on ? who.name + " is onboard too" : who.name + " taken off the position", function () { saveRoster(prev); });
   }
   function showTab(t) {
     state.tab = t;
@@ -791,8 +902,9 @@ td.who-c { font-weight: 600; }
   }
 
   function tickClock() {
-    var d = new Date();
-    document.getElementById("clock").textContent = d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + " · " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+    var d = new Date(now());
+    document.getElementById("clockTxt").textContent = d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }) + " · " + pad(d.getHours()) + ":" + pad(d.getMinutes()) + (timeOffset ? " · adjusted" : "");
+    document.getElementById("clock").classList.toggle("adj", !!timeOffset);
   }
 
   /* ---------- actions ---------- */
@@ -838,7 +950,7 @@ td.who-c { font-weight: 600; }
         return [q(e.name), q(e.pos), q(e.deptName), q(e.dutyAt ? fmtIso(e.dutyAt) : ""), q(fmtIso(e.inAt)), q(e.outAt ? fmtIso(e.outAt) : "")].join(",");
       }));
     }
-    var d = new Date(), name = prefix + d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + ".csv";
+    var d = new Date(now()), name = prefix + d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + ".csv";
     downloads.save({ filename: name, data: "﻿" + lines.join("\r\n") }).catch(function (e) {
       if (e && e.code === "declined") return;
       showToast("Export is not available here.");
@@ -849,7 +961,7 @@ td.who-c { font-weight: 600; }
   var dlg = null;
   function dlgEl(id) { return document.getElementById(id); }
   function dlgMatches() {
-    var v = dlgEl("dlgRange").value, cut = v === "all" ? Infinity : Date.now() - Number(v) * 30.44 * 86400000;
+    var v = dlgEl("dlgRange").value, cut = v === "all" ? Infinity : now() - Number(v) * 30.44 * 86400000;
     return dlg.rows.filter(function (r) { return r.outAt && r.outAt < cut; });
   }
   function updateDlg() {
@@ -886,8 +998,159 @@ td.who-c { font-weight: 600; }
     render();
   }
 
+  /* ---------- date and time ---------- */
+  var ckTimer = null;
+  function offsetText(ms) {
+    if (!ms) return "Following the device clock automatically";
+    var a = Math.abs(ms), h = Math.floor(a / 3600000), m = Math.round((a % 3600000) / 60000);
+    if (m === 60) { h++; m = 0; }
+    return "Adjusted " + (ms < 0 ? "\u2212" : "+") + (h ? h + " h" : "") + (h && m ? " " : "") + (m ? m + " min" : (h ? "" : "under 1 min")) + " from the device clock";
+  }
+  function localInput(ms) { var d = new Date(ms); return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + "T" + pad(d.getHours()) + ":" + pad(d.getMinutes()); }
+  function updateClockDlg() {
+    var box = document.getElementById("clockDlg"); if (box.hidden) return;
+    var d = new Date(now());
+    document.getElementById("ckNow").textContent = pad(d.getHours()) + ":" + pad(d.getMinutes()) + ":" + pad(d.getSeconds());
+    document.getElementById("ckDate").textContent = d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
+    var st = document.getElementById("ckStatus"); st.textContent = offsetText(timeOffset); st.classList.toggle("adj", !!timeOffset);
+    Array.prototype.forEach.call(box.querySelectorAll('[data-act^="clock-"]'), function (el) {
+      if (el.getAttribute("data-act") !== "clock-close") el.disabled = !state.writable;
+    });
+    if (state.writable) document.getElementById("ckReset").disabled = !timeOffset;
+  }
+  function openClock() {
+    if (state.tv) return;
+    closeMenu();
+    document.getElementById("ckInput").value = localInput(now());
+    document.getElementById("clockDlg").hidden = false;
+    updateClockDlg(); clearInterval(ckTimer); ckTimer = setInterval(updateClockDlg, 1000);
+  }
+  function closeClock() { document.getElementById("clockDlg").hidden = true; clearInterval(ckTimer); }
+  function saveOffset(ms) {
+    timeOffset = Math.round(ms) || 0;
+    lsSet(LS_T, timeOffset);
+    if (db) enqueue(function () { return db.doc("config/clock").set({ offset: timeOffset }); });
+    document.getElementById("ckInput").value = localInput(now());
+    tickClock(); updateClockDlg(); render();
+  }
+
+  /* ---------- online storage estimate ---------- */
+  var FREE_BYTES = 1073741824;
+  function fmtBytes(b) { return b < 1024 ? b + " B" : b < 1048576 ? (b / 1024).toFixed(1) + " KB" : b < FREE_BYTES ? (b / 1048576).toFixed(1) + " MB" : (b / FREE_BYTES).toFixed(2) + " GB"; }
+  /* Firestore counts the document, plus two automatic index entries for every simple field. */
+  function estBytes(coll, id, data) {
+    var nm = coll.length + id.length + 16, sz = nm + 32;
+    Object.keys(data || {}).forEach(function (k) {
+      var v = data[k];
+      if (v && typeof v === "object") { sz += k.length + 1 + JSON.stringify(v).length; return; }
+      var vs = typeof v === "string" ? v.length + 1 : (typeof v === "number" ? 8 : 1);
+      sz += k.length + 1 + vs + 2 * (nm + vs + 32);
+    });
+    return sz;
+  }
+  function storageHTML() {
+    if (!state.online || state.tv || !state.ready || state.error) return "";
+    var s = state.store, busy = state.storeBusy;
+    var btn = '<button type="button" class="btn quiet" data-act="store-check"' + (busy ? " disabled" : "") + ">" + (busy ? "Checking\u2026" : (s ? "Refresh" : "Check now")) + "</button>";
+    if (!s) return '<div class="store"><div class="store-top"><span>Free online storage: not checked yet.</span>' + btn + "</div></div>";
+    var left = Math.max(0, FREE_BYTES - s.bytes), pct = Math.min(100, s.bytes / FREE_BYTES * 100), avg = Math.max(150, s.bytes / Math.max(1, s.docs));
+    var cls = pct > 90 ? "hi" : pct > 70 ? "mid" : "";
+    return '<div class="store"><div class="store-top"><span><b>' + fmtBytes(left) + "</b> free of 1 GB</span><span>\u00b7 room for about " + Math.floor(left / avg).toLocaleString("en-GB") + " more entries</span>" + btn + "</div>" +
+      '<div class="store-bar" role="img" aria-label="' + pct.toFixed(2) + ' percent used"><i class="' + cls + '" style="width:' + Math.max(pct, 0.8).toFixed(2) + '%"></i></div>' +
+      "<small>Estimate from " + s.docs.toLocaleString("en-GB") + " stored items, checked " + fmtShort(s.t) + ". Checking reads every entry once (the free plan allows 50,000 reads a day).</small></div>";
+  }
+  async function checkStorage() {
+    if (!db || state.storeBusy) return;
+    if (navigator.onLine === false) { showToast("Connect to the internet to check the storage."); return; }
+    state.storeBusy = true; render();
+    try {
+      var total = 0, docs = 0;
+      for (var i = 0; i < 2; i++) {
+        var coll = i ? "visitors" : "log", c = db.collection(coll), list;
+        if (c.get) { var q = await c.get({ source: "server" }); list = q.docs.map(function (x) { return { id: x.id, data: x.data() }; }); }
+        else list = (i ? state.visitors : state.log).map(function (x) { return { id: x.id, data: x }; });
+        list.forEach(function (x) { total += estBytes(coll, x.id, x.data); docs++; });
+      }
+      if (state.roster) { total += estBytes("config", "roster", state.roster); docs++; }
+      state.store = { bytes: total, docs: docs, t: now() };
+      lsSet("dutysignin.store", state.store);
+    } catch (e) { showToast("Could not check the storage. Try again when online."); }
+    state.storeBusy = false; render();
+  }
+
+  /* ---------- drag to reorder ---------- */
+  var drag = null;
+  function dragUpdate() {
+    var g = drag; if (!g) return;
+    var dy = (g.lastY + window.scrollY) - (g.startY + g.startScroll);
+    g.el.style.transform = "translateY(" + dy + "px)";
+    var center = g.top + g.h / 2 + dy, to = 0;
+    g.others.forEach(function (o) { if (o.mid < center) to++; });
+    g.to = to;
+    g.others.forEach(function (o, i) {
+      var fin = i < to ? i : i + 1, shift = fin === o.idx ? 0 : (fin > o.idx ? g.h : -g.h);
+      o.el.style.transform = shift ? "translateY(" + shift + "px)" : "";
+    });
+  }
+  function dragScroll() {
+    if (!drag) return;
+    var y = drag.lastY, h = window.innerHeight, v = 0;
+    if (y < 70) v = -Math.ceil((70 - y) / 4); else if (y > h - 70) v = Math.ceil((y - (h - 70)) / 4);
+    if (v) { window.scrollBy(0, v); dragUpdate(); }
+    drag.raf = requestAnimationFrame(dragScroll);
+  }
+  function dragMove(ev) { if (!drag || ev.pointerId !== drag.pid) return; drag.lastY = ev.clientY; dragUpdate(); }
+  function dragEnd(ev, commit) {
+    var g = drag; if (!g || (ev && ev.pointerId !== g.pid)) return;
+    drag = null; cancelAnimationFrame(g.raf);
+    document.removeEventListener("pointermove", dragMove);
+    document.removeEventListener("pointerup", dragUp);
+    document.removeEventListener("pointercancel", dragCancel);
+    document.body.classList.remove("drag-on");
+    g.el.classList.remove("dragging"); g.el.style.transform = "";
+    g.others.forEach(function (o) { o.el.classList.remove("shifting"); o.el.style.transform = ""; });
+    state.dragging = false;
+    if (!commit || g.to === g.from) { render(); return; }
+    var r = clone(state.roster);
+    if (g.kind === "dept") {
+      var fi = r.depts.findIndex(function (x) { return x.id === g.d; }); if (fi < 0) { render(); return; }
+      r.depts.splice(g.to, 0, r.depts.splice(fi, 1)[0]);
+    } else {
+      var dm = r.depts.find(function (x) { return x.id === g.d; }); if (!dm) { render(); return; }
+      var sls = slotsOf(dm), si = sls.findIndex(function (x) { return x.key === g.key; }); if (si < 0) { render(); return; }
+      sls.splice(g.to, 0, sls.splice(si, 1)[0]);
+      dm.people = [].concat.apply([], sls.map(function (x) { return x.members; }));
+    }
+    saveRoster(r);
+  }
+  function dragUp(ev) { dragEnd(ev, true); }
+  function dragCancel(ev) { dragEnd(ev, false); }
+  document.addEventListener("pointerdown", function (ev) {
+    var g = ev.target.closest && ev.target.closest(".grip");
+    if (!g || !state.editing || !state.writable || drag) return;
+    if (ev.pointerType === "mouse" && ev.button !== 0) return;
+    ev.preventDefault();
+    if (document.activeElement && document.activeElement.blur) document.activeElement.blur();
+    var kind = g.getAttribute("data-drag"), cls = kind === "dept" ? "dgroup" : "slotgrp";
+    var el = g.closest("." + cls); if (!el) return;
+    var sibs = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.classList.contains(cls); });
+    var from = sibs.indexOf(el), sy = window.scrollY, rect = el.getBoundingClientRect();
+    drag = { kind: kind, el: el, from: from, to: from, d: g.getAttribute("data-d"), key: g.getAttribute("data-slot"), pid: ev.pointerId,
+      startY: ev.clientY, lastY: ev.clientY, startScroll: sy, top: rect.top + sy, h: rect.height, raf: 0,
+      others: sibs.map(function (c, idx) { return { el: c, idx: idx }; }).filter(function (o) { return o.el !== el; }).map(function (o) { var r2 = o.el.getBoundingClientRect(); o.mid = r2.top + sy + r2.height / 2; return o; }) };
+    state.dragging = true;
+    try { g.setPointerCapture(ev.pointerId); } catch (e) {}
+    el.classList.add("dragging"); drag.others.forEach(function (o) { o.el.classList.add("shifting"); });
+    document.body.classList.add("drag-on");
+    document.addEventListener("pointermove", dragMove);
+    document.addEventListener("pointerup", dragUp);
+    document.addEventListener("pointercancel", dragCancel);
+    drag.raf = requestAnimationFrame(dragScroll);
+  });
+
   document.addEventListener("click", function (ev) {
     if (ev.target.id === "dlg") { closeDlg(); return; }
+    if (ev.target.id === "clockDlg") { closeClock(); return; }
     if (!ev.target.closest('[data-act="menu"]')) closeMenu();
     var b = ev.target.closest("[data-act]");
     if (!b) return;
@@ -897,6 +1160,7 @@ td.who-c { font-weight: 600; }
     if (act === "log-toggle") { var lk = b.getAttribute("data-log"); logOpen[lk] = !logOpen[lk]; lsSet("dutysignin.logopen." + lk, logOpen[lk]); render(); return; }
     if (act === "tab") { showTab(b.getAttribute("data-tab")); return; }
     if (act === "export") { exportCsv().catch(function () { showToast("Export is not available here."); }); return; }
+    if (act === "discrete") { state.discrete = !state.discrete; lsSet("dutysignin.discrete", state.discrete); render(); return; }
     if (act === "tv") { setTv(true); return; }
     if (act === "tv-exit") { setTv(false); return; }
     if (act === "log-delete") { if (state.writable) openDlg(b.getAttribute("data-log") === "visitors" ? "visitors" : "roster"); return; }
@@ -906,11 +1170,25 @@ td.who-c { font-weight: 600; }
     if (act === "lock") { if (window.__batelloLock) window.__batelloLock(); return; }
     if (act === "setup") { saveRoster(defaultRoster()); return; }
     if (act === "edit-toggle") { state.editing = !state.editing; if (document.activeElement) document.activeElement.blur(); render(); return; }
+    if (act === "clock") { openClock(); return; }
+    if (act === "clock-close") { closeClock(); return; }
+    if (act === "clock-shift" || act === "clock-set" || act === "clock-reset") {
+      if (!state.writable) { showToast("View only: the time can't be changed here."); return; }
+      if (act === "clock-shift") saveOffset(timeOffset + Number(b.getAttribute("data-min")) * 60000);
+      else if (act === "clock-reset") saveOffset(0);
+      else {
+        var cv = document.getElementById("ckInput").value, cm = cv ? new Date(cv).getTime() : NaN;
+        if (isNaN(cm)) { showToast("Pick a date and time first."); return; }
+        saveOffset(cm - Date.now());
+      }
+      return;
+    }
+    if (act === "store-check") { checkStorage(); return; }
     if (!state.writable) return;
     if (act === "visitor-out") {
       var vid = b.getAttribute("data-v"), v = state.visitors.find(function (x) { return x.id === vid; });
       if (!v) return;
-      var t = Date.now();
+      var t = now();
       setVisitor(vid, { outAt: t });
       showToast(v.name + " signed OUT at " + fmtShort(t), function () { setVisitor(vid, { outAt: null }); });
       return;
@@ -938,21 +1216,43 @@ td.who-c { font-weight: 600; }
       var r = clone(state.roster), d = r.depts.find(function (x) { return x.id === dId; });
       var npid = newId("p"); d.people.push({ id: npid, name: "New person", phone: "", slot: npid, pos: "" }); saveRoster(r);
     } else if (act === "add-relief") {
-      var rr = clone(state.roster), dr = rr.depts.find(function (x) { return x.id === dId; }), sk2 = b.getAttribute("data-slot");
-      var anc = dr.people.filter(function (m) { return (m.slot || m.id) === sk2; }), lastDep = "", ap = "";
-      anc.forEach(function (m) { if (m.pos) ap = m.pos; if (m.depart && m.depart > lastDep) lastDep = m.depart; });
-      var dt = new Date(); dt.setDate(dt.getDate() + 1);
-      var arr = lastDep || (dt.getFullYear() + "-" + pad(dt.getMonth() + 1) + "-" + pad(dt.getDate()));
-      var rid = newId("p"); dr.people.push({ id: rid, name: "Relief person", phone: "", slot: sk2, pos: ap, arrive: arr }); saveRoster(rr);
+      var rr = clone(state.roster), dr = rr.depts.find(function (x) { return x.id === dId; }), sk2 = b.getAttribute("data-slot"), ap = "";
+      dr.people.forEach(function (m) { if ((m.slot || m.id) === sk2 && m.pos) ap = m.pos; });
+      dr.people.push({ id: newId("p"), name: "New person", phone: "", slot: sk2, pos: ap }); saveRoster(rr);
+    } else if (act === "show-extra" || act === "hide-extra") {
+      if (act === "hide-extra" && openEntries().some(function (e) { return e.pid === pId; })) { showToast("Slide this person to OUT first."); return; }
+      setExtra(dId, b.getAttribute("data-slot"), pId, act === "show-extra");
+    } else if (act === "add-below") {
+      var rb = clone(state.roster), db2 = rb.depts.find(function (x) { return x.id === dId; }), bk = b.getAttribute("data-slot");
+      normalize(db2);
+      var bsl = slotsOf(db2).find(function (x) { return x.key === bk; }); if (!bsl) return;
+      var lastIdx = db2.people.indexOf(bsl.members[bsl.members.length - 1]), bid = newId("p");
+      db2.people.splice(lastIdx + 1, 0, { id: bid, name: "New person", phone: "", slot: bid, pos: bsl.pos }); saveRoster(rb);
     } else if (act === "remove-person") {
       if (openEntries().some(function (e) { return e.pid === pId; })) { showToast("Slide this person to OUT before removing them."); return; }
       var r2 = clone(state.roster), d2 = r2.depts.find(function (x) { return x.id === dId; });
-      d2.people = d2.people.filter(function (p) { return p.id !== pId; }); saveRoster(r2);
+      d2.people = d2.people.filter(function (p) { return p.id !== pId; });
+      if (d2.extra) Object.keys(d2.extra).forEach(function (k) { d2.extra[k] = d2.extra[k].filter(function (x) { return x !== pId; }); if (!d2.extra[k].length) delete d2.extra[k]; });
+      saveRoster(r2);
     }
   });
 
   document.addEventListener("change", function (ev) {
     var t = ev.target, kind = t.getAttribute && t.getAttribute("data-edit");
+    if (t.getAttribute && t.getAttribute("data-moveslot")) {
+      var toId = t.value; if (!toId) return;
+      var rv = clone(state.roster), from = rv.depts.find(function (x) { return x.id === t.getAttribute("data-d"); }), to = rv.depts.find(function (x) { return x.id === toId; });
+      var mkey = t.getAttribute("data-slot");
+      if (!from || !to) return;
+      var mem = from.people.filter(function (m) { return (m.slot || m.id) === mkey; });
+      if (mem.some(function (m) { return openEntries().some(function (e) { return e.pid === m.id; }); })) { showToast("Slide this person to OUT before moving the position."); render(); return; }
+      from.people = from.people.filter(function (m) { return (m.slot || m.id) !== mkey; });
+      mem.forEach(function (m) { m.slot = mkey; to.people.push(m); });
+      if (from.extra && from.extra[mkey]) { to.extra = to.extra || {}; to.extra[mkey] = from.extra[mkey]; delete from.extra[mkey]; }
+      if (from.active && from.active[mkey]) { to.active = to.active || {}; to.active[mkey] = from.active[mkey]; delete from.active[mkey]; }
+      saveRoster(rv); showToast("Moved to " + to.name); return;
+    }
+    if (t.getAttribute && t.getAttribute("data-addextra")) { if (t.value) setExtra(t.getAttribute("data-d"), t.getAttribute("data-slot"), t.value, true); else render(); return; }
     if (t.getAttribute && t.getAttribute("data-swap")) { swapActive(t.getAttribute("data-d"), t.getAttribute("data-slot"), t.value); return; }
     if (!kind || !state.roster) return;
     var val = t.value.trim();
@@ -961,11 +1261,7 @@ td.who-c { font-weight: 600; }
     if (kind === "dname") { if (!val) { t.value = d.name; return; } d.name = val; }
     else if (kind === "spos") { var sk = t.getAttribute("data-slot"); d.people.forEach(function (m) { if ((m.slot || m.id) === sk) m.pos = val; }); }
     else { var p = d.people.find(function (x) { return x.id === t.getAttribute("data-p"); }); if (!p) return; if (kind === "pphone") p.phone = val;
-      else if (kind === "parrive" || kind === "pdepart") {
-        var na = kind === "parrive" ? val : (p.arrive || ""), nd = kind === "pdepart" ? val : (p.depart || "");
-        if (na && nd && nd < na) { showToast("Departure can't be before arrival"); t.value = kind === "parrive" ? (p.arrive || "") : (p.depart || ""); return; }
-        if (kind === "parrive") p.arrive = val; else p.depart = val;
-      } else { if (!val) { t.value = p.name; return; } p.name = val; } }
+      else { if (!val) { t.value = p.name; return; } p.name = val; } }
     saveRoster(r);
   });
 
@@ -995,6 +1291,12 @@ td.who-c { font-weight: 600; }
   }
   function startOnline() {
     state.online = true;
+    db.doc("config/clock").onSnapshot(function (sn) {
+      if (!sn.exists) return;
+      var o = Number(sn.data().offset) || 0;
+      if (o !== timeOffset) { timeOffset = o; lsSet(LS_T, o); tickClock(); updateClockDlg(); scheduleRender(); }
+    }, function () {});
+    setTimeout(function () { var st = state.store; if (!st || (now() - st.t > 86400000 && st.docs < 5000)) checkStorage(); }, 6000);
     var fail = function () { state.error = "Could not load the saved data. Reload the page to try again."; render(); };
     db.doc("config/roster").onSnapshot(function (s) { state.roster = s.exists ? s.data() : null; state.ready = true; scheduleRender(); }, fail);
     db.collection("log").orderBy("inAt", "desc").limit(300).onSnapshot(function (q) {
@@ -1009,7 +1311,7 @@ td.who-c { font-weight: 600; }
 
   var lastDay = todayNum();
   function tick() { tickClock(); if (todayNum() !== lastDay) { lastDay = todayNum(); render(); } }
-  tickClock(); setInterval(tick, 15000);
+  tickClock(); setInterval(tick, 5000);
   render();
   (async function () {
     try {
@@ -1082,7 +1384,7 @@ td.who-c { font-weight: 600; }
           },
           collection: function (n) {
             var c = fs.collection(n);
-            return { doc: function (id) { return wrapDoc(id ? c.doc(id) : c.doc()); }, get: function () { return c.get(); },
+            return { doc: function (id) { return wrapDoc(id ? c.doc(id) : c.doc()); }, get: function (o) { return c.get(o); },
               orderBy: function (f, dir) { var q = c.orderBy(f, dir); return { limit: function (k) { var q2 = q.limit(k); return { onSnapshot: function (a, b) { return q2.onSnapshot(a, b); } }; } }; } };
           }
         };
